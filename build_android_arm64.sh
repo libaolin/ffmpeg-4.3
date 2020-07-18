@@ -6,13 +6,13 @@ export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/linux-x86_64
 
 export API=23
 
-export PREFIX=out/armeabi-v7a
+export PREFIX=out/arm64-v8a
 
-export NM=$TOOLCHAIN/bin/arm-linux-androideabi-nm
+export NM=$TOOLCHAIN/bin/aarch64-linux-android-nm
 
-export STRIP=$TOOLCHAIN/bin/arm-linux-androideabi-strip
+export STRIP=$TOOLCHAIN/bin/aarch64-linux-android-strip
 
-export CC=$TOOLCHAIN/bin/armv7a-linux-androideabi$API-clang
+export CC=$TOOLCHAIN/bin/aarch64-linux-android$API-clang
 
 export PKG_CONFIG_PATH=$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH
 
@@ -26,7 +26,7 @@ cd x264
     --disable-cli \
     --enable-strip \
     --sysroot=$TOOLCHAIN/sysroot \
-    --host=arm-linux-androideabi
+    --host=aarch64-linux-android
 
 make clean
 
@@ -40,8 +40,8 @@ cd ../
 function build_ffmpeg {
 ./configure \
     --prefix=$PREFIX \
-    --arch=arm \
-    --cpu=armv7-a \
+    --arch=arm64 \
+    --cpu=armv8-a \
     --sysroot=$TOOLCHAIN/sysroot \
     --target-os=android \
     --nm=$NM \
